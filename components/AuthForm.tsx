@@ -62,7 +62,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
           : await signInUser({ email: values.email });
 
       if (user) {
-        router.replace(`admin/dashboard`);
+        router.replace(`admin/dashboard/orders`);
       }
       console.log(user?.email);
       setAccountId(user.email);
