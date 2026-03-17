@@ -17,6 +17,8 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { createAccount, signInUser } from "@/lib/actions/user.actions";
+import { useRouter } from "next/navigation";
 
 type FormType = "sign-in" | "sign-up";
 
@@ -31,9 +33,10 @@ const authFormSchema = (formType: FormType) => {
 };
 
 const AuthForm = ({ type }: { type: FormType }) => {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [accountId, setAccountId] = useState(null);
+  const [accountId, setAccountId] = useState("");
 
   const formSchema = authFormSchema(type);
 
@@ -58,7 +61,11 @@ const AuthForm = ({ type }: { type: FormType }) => {
             })
           : await signInUser({ email: values.email });
 
-      setAccountId(user.accountId);
+      if (user) {
+        router.replace(`admin/dashboard`);
+      }
+      console.log(user?.email);
+      setAccountId(user.email);
     } catch {
       setErrorMessage("No se pudo procesar la solicitud. Intenta nuevamente.");
     } finally {
@@ -153,9 +160,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
 
           <div className="flex justify-center text-sm">
             <p className="text-light-100">
-              {type === "sign-in"
-                ? "¿No tienes cuenta?"
-                : "¿Ya tienes cuenta?"}
+              {type === "sign-in" ? "¿No tienes cuenta?" : "¿Ya tienes cuenta?"}
             </p>
 
             <Link
