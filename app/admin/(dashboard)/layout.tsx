@@ -22,9 +22,9 @@ const navItems = [
     icon: Users,
   },
   {
-    name: "Menú",
-    href: "/admin/dashboard/menu",
-    icon: Menu,
+    name: "Riders",
+    href: "/admin/dashboard/riders",
+    icon: LayoutDashboard,
   },
   {
     name: "Configuración",
@@ -83,14 +83,13 @@ export default function DashboardLayout({
           })}
         </nav>
 
-        {/* FOOTER */}
-        <div className="p-4 border-t border-[#2a0a0a] text-xs text-gray-500">
+        <footer className="p-4 border-t border-[#2a0a0a] text-xs text-gray-500">
           Panel administrativo · Sushi
-        </div>
+        </footer>
       </aside>
 
       {/* CONTENT */}
-      <main className="flex-1 overflow-y-auto bg-gradient-to-br from-[#0a0a0a] via-[#0f0f0f] to-[#1a0a0a] p-6">
+      <main className="flex-1 overflow-y-auto bg-linear-to-br from-[#0a0a0a] via-dark to-[#1a0a0a] p-6">
         {children}
       </main>
     </div>

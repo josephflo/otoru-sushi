@@ -10,11 +10,18 @@ const orders = () => {
   ]);
 
   return (
+    <>
+    <div>
+      <h1 className='text-2xl font-bold mb-4'>
+        Órdenes Recientes
+      </h1>
+    </div>
     <div className="grid grid-cols-3 gap-4">
       {orders.map((order) => (
         <OrderCard key={order.id} order={order} />
       ))}
     </div>
+    </>
   )
 }
 
