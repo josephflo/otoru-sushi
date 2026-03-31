@@ -6,7 +6,7 @@ import {
   LayoutDashboard,
   ShoppingCart,
   Users,
-  Menu,
+  Bike,
   Settings,
 } from "lucide-react";
 
@@ -24,7 +24,7 @@ const navItems = [
   {
     name: "Riders",
     href: "/admin/dashboard/riders",
-    icon: LayoutDashboard,
+    icon: Bike,
   },
   {
     name: "Configuración",
